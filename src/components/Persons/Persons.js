@@ -3,14 +3,14 @@ import React, { Component } from 'react';
 import Person from './Person/Person';
 
 class Persons extends Component {
-  static getDerivedStateFromProps(props, state) {
-    console.log('[Persons.js] getDerivedStateFromProps');
-    return state;
-  }
+  // static getDerivedStateFromProps(props, state) {
+  //   console.log('[Persons.js] getDerivedStateFromProps');
+  //   return state;
+  // }
 
   shouldComponentUpdate(nextProps, nextState, nextContext) {
     console.log('[Persons.js] shouldComponentUpdate');
-    return true;
+    return (nextProps.persons !== this.props.persons);
   }
 
   getSnapshotBeforeUpdate(prevProps, prevState) {
@@ -21,6 +21,10 @@ class Persons extends Component {
   componentDidUpdate(prevProps, prevState, snapshot) {
     console.log('[Persons.js] componentDidUpdate');
     console.log(snapshot);
+  }
+
+  componentWillUnmount() {
+    console.log('[Persons.js] componentWillUnmount');
   }
 
   render() {
